@@ -1,151 +1,124 @@
 import React, { useRef } from 'react';
-import { Container, Box, Typography, Grid, Button, Card, CardContent, Divider, collapseClasses } from '@mui/material';
-import { motion, useInView } from 'framer-motion';
-import { Link } from 'react-router-dom';
-import Slider from 'react-slick';
-import 'slick-carousel/slick/slick.css';
-import 'slick-carousel/slick/slick-theme.css';
-import Navbar from '../Components/Navbar.jsx';
-import Footer from '../Components/Footer.jsx';
+import { Box, Typography } from '@mui/material';
+import { motion, useScroll, useSpring, useTransform } from 'framer-motion';
+import Navbar from '../Components/Navbar';
+
+// Custom data for sections
+const sections = [
+    { id: 1, image: "/image.png", text: "Sustainable Car Detailing.", description: "As pioneers in eco-friendly car detailing, we offer a full range \nof services that keep your car in tip-top condition!" },
+    { id: 2, image: "/image.png", text: "Our Mission.", description: "At ShinyTomato, we deliver premium car detailing experiences in the most \neco-friendly way possible. We believe that luxury and sustainability can go \nhand in hand, and we strive to prove that every day." },
+    { id: 3, image: "/images/your-image3.jpg", text: "Innovative Solutions for You", description: "Explore our cutting-edge technologies and services." },
+    { id: 4, image: "/images/your-image4.jpg", text: "Join Us on Our Mission", description: "Be a part of something bigger. Let's make a difference together." }
+];
+const renderDescriptionWithBreaks = (text) => {
+    return text.split('\n').map((line, index) => (
+        <span key={index}>
+            {line}
+            <br />
+        </span>
+    ));
+};
+function useParallax(value, distance) {
+    return useTransform(value, [0, 1], [-distance, distance]);
+}
+
+function ParallaxImage({ section }) {
+    const ref = useRef(null);
+    const { scrollYProgress } = useScroll({ target: ref });
+    const y = useParallax(scrollYProgress, 200);
+    const opacity = useTransform(scrollYProgress, [0, 0.5, 1], [0.5, 1, 0.5]);
+    return (
+        <section className="img-container">
+            <motion.div ref={ref} style={{ opacity }} className="image-wrapper">
+                <img src={section.image} alt={`Section ${section.id}`} />
+            </motion.div>
+            <motion.h2 initial={{ visibility: "hidden" }} animate={{ visibility: "visible" }} style={{ y }}>
+                {section.text}
+                <div className="description-container">
+                    {/* Split the description into paragraphs or multiple lines */}
+                    <p>{renderDescriptionWithBreaks(section.description)}</p>
+                </div>
+            </motion.h2>
+        </section>
+    );
+}
 
 function Home() {
-    // Testimonials Data
-    const testimonials = [
-        { name: "Sarah M.", text: "This organization changed my life! Seeing wildlife recover is truly rewarding." },
-        { name: "John D.", text: "Amazing work! The team is passionate and committed to every rescue." },
-        { name: "Emily R.", text: "Volunteering here was the best decision I ever made!" },
-    ];
-
-    // Create references for sections
-    const contentRef = useRef(null);
-    const contentInView = useInView(contentRef, { triggerOnce: true, margin: "-100px" });
+    const { scrollYProgress } = useScroll();
+    const scaleX = useSpring(scrollYProgress, {
+        stiffness: 100,
+        damping: 30,
+        restDelta: 0.001,
+    });
 
     return (
-        <Box backgroundColor= 'black'>
+        <Box>
             <Navbar />
-            <Container maxWidth="x1" >
-                {/* Hero Section with Parallax Effect */}
-                <Box sx={{
-                    backgroundImage: "url('/background.jpg')",
-                    backgroundSize: 'cover',
-                    backgroundPosition: 'center',
-                    height: 500,
-                    borderRadius: 5,
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    color: 'white',
-                    textAlign: 'center',
-                    boxShadow: "0px 4px 20px rgba(0, 0, 0, 0.3)",
-                    position: 'relative',
-                    width: '100%',
-                }}>
-                    <motion.div
-                        initial={{ opacity: 0, y: -50 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 1 }}
-                        style={{
-                            display: "flex", alignItems: "center", justifyContent: "center", textAlign: "center", width: "100%",
-                        }}
-                    >
-                        <Typography variant="h3" fontWeight="bold" color="white" sx={{ maxWidth: "80%" }}>
-                            Rescuing and rehabilitating wildlife for a better tomorrow.
-                        </Typography>
-                    </motion.div>
-                </Box>
-
-                {/* Impact Numbers Section */}
-                <Box sx={{ my: 6, textAlign: "center", py: 5, borderRadius: 5, backgroundColor: '#fff', boxShadow: "0px 4px 10px rgba(0, 0, 0, 0.1)" }}>
-                    <Typography variant="h4" fontWeight="bold">Our Impact</Typography>
-                    <Grid container spacing={3} justifyContent="center" sx={{ mt: 3 }}>
-                        {[
-                            { number: "1,500+", label: "Animals Rescued" },
-                            { number: "800+", label: "Rehabilitated & Released" },
-                            { number: "200+", label: "Volunteers Engaged" }
-                        ].map((item, index) => (
-                            <Grid item xs={12} sm={4} key={index}>
-                                <motion.div whileHover={{ scale: 1.1 }}>
-                                    <Typography variant="h3" fontWeight="bold" color="primary">{item.number}</Typography>
-                                    <Typography variant="body1">{item.label}</Typography>
-                                </motion.div>
-                            </Grid>
-                        ))}
-                    </Grid>
-                </Box>
-                <Divider sx={{ my: 10 }} />
-
-                {/* How We Help Section */}
-                <Container sx={{ mt: 5, textAlign: "center" }} ref={contentRef}>
-                    <motion.div
-                        initial={{ opacity: 0, y: 50 }}
-                        animate={contentInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
-                        transition={{ duration: 0.8 }}
-                    >
-                        <Typography variant="h4" fontWeight="bold" gutterBottom>
-                            How We Help
-                        </Typography>
-                        <Typography variant="body1" color="textSecondary" paragraph mb={5}>
-                            Our team is dedicated to rescuing, rehabilitating, and releasing wildlife back into their natural habitats.
-                        </Typography>
-
-                        {/* Grid for How We Help Cards */}
-                        <Grid container spacing={4} justifyContent="center">
-                            {[
-                                { title: "Rescue", text: "Providing emergency response for injured and orphaned wildlife.", img: "rescue.jpg" },
-                                { title: "Rehabilitate", text: "Caring for wildlife with expert medical attention and nurturing.", img: "rehabilitation.jpg" },
-                                { title: "Release", text: "Returning animals to their natural environment safely.", img: "release.jpg" }
-                            ].map((item, index) => (
-                                <Grid item xs={12} sm={6} md={4} key={index}>
-                                    <motion.div whileHover={{ scale: 1.05 }}>
-                                        <Card sx={{ boxShadow: 5, borderRadius: 3, height: 350 }}>
-                                            <img
-                                                src={item.img}
-                                                alt={item.title}
-                                                style={{ width: "100%", height: "200px", objectFit: "cover", borderTopLeftRadius: "12px", borderTopRightRadius: "12px" }}
-                                            />
-                                            <CardContent sx={{ p: 3 }}>
-                                                <Typography variant="h5" fontWeight="bold">{item.title}</Typography>
-                                                <Typography variant="body1" color="textSecondary">{item.text}</Typography>
-                                            </CardContent>
-                                        </Card>
-                                    </motion.div>
-                                </Grid>
-                            ))}
-                        </Grid>
-                    </motion.div>
-                </Container>
-                <Divider sx={{ my: 10 }} />
-
-                {/* Testimonials Section */}
-                <Box sx={{ my: 6, textAlign: "center", color: "black", py: 5, backgroundColor: "#fff", borderRadius:5 }}>
-                    <Typography variant="h4" fontWeight="bold" gutterBottom>What People Say</Typography>
-                    <Slider dots infinite autoplay speed={2000} slidesToShow={1} slidesToScroll={1}>
-                        {testimonials.map((item, index) => (
-                            <div key={index}>
-                                <Typography variant="h6" sx={{ fontStyle: "italic", px: 3 }}>
-                                    "{item.text}"
-                                </Typography>
-                                <Typography variant="body2" sx={{ mt: 2, fontWeight: "bold" }}>- {item.name}</Typography>
-                            </div>
-                        ))}
-                    </Slider>
-                </Box>
-                <Divider sx={{ my: 10 }} />
-
-                {/* Call to Action Section */}
-                <Box sx={{ mt: 5, textAlign: "center", backgroundColor: "white", padding: "40px 0", borderRadius: 5 }}>
-                    <Typography variant="h4" fontWeight="bold" gutterBottom>
-                        Get Involved
-                    </Typography>
-                    <Typography variant="body1" color="textSecondary">
-                        Join us in making a difference. Whether you want to volunteer, donate, or spread awareness, your support matters!
-                    </Typography>
-                    <Box sx={{ mt: 3 }}>
-                        <Button variant="outlined" color="secondary" size="large" sx={{ mx: 2 }} component={Link} to="/supportus">Donate</Button>
-                    </Box>
-                </Box>
-            </Container>
-            <Footer />
+            <div id="home-page">
+                {sections.map((section) => (
+                    <ParallaxImage key={section.id} section={section} />
+                ))}
+                <motion.div className="progress" style={{ scaleX }} />
+            </div>
+            <div className="arrow-container">
+                <div className="arrow"></div>
+            </div>
+            <style jsx>{`
+                .img-container {
+                    height: 100vh;
+                    scroll-snap-align: start;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    position: relative;
+                }
+                .image-wrapper {
+                    width: 100%;
+                    height: 700px;
+                    background: #f5f5f5;
+                    overflow: hidden;
+                    transition: opacity 0.5s ease-in-out;
+                }
+                .image-wrapper img {
+                    width: 100%;
+                    height: 100%;
+                    object-fit: cover;
+                    filter: brightness(60%);
+                }
+                .description-container {
+                    display: flex;
+                    flex-direction: column;
+                    gap: 10px;
+                }
+                .description-container p {
+                    font-family: 'Poppins', sans-serif;
+                    font-size: 20px;
+                    font-weight: 100;
+                    color: #BDBEC1;
+                }
+                .img-container h2 {
+                    color: rgb(255, 255, 255);
+                    position: absolute;
+                    font-family: 'Poppins', sans-serif;
+                    font-size: 60px;
+                    font-weight: 900;
+                    top: 40%;
+                    left: 10%;
+                    transform: translateY(-50%);
+                    text-align: left;
+                    width: 80%;
+                }
+                .progress {
+                    position: fixed;
+                    left: 0;
+                    right: 0;
+                    height: 5px;
+                    background: #DD4242;
+                    bottom: 50px;
+                    transform: scaleX(0);
+                }
+                        
+            `}</style>
         </Box>
     );
 }

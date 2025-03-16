@@ -36,9 +36,8 @@ const theme = createTheme({
   
   typography: {
     fontFamily: [
-      'Ethnocentric',
-      'sans-serif',
-    ].join(','),
+      'Poppins',
+    ]
   },
 })
 

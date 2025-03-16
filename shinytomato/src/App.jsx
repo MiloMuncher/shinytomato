@@ -17,7 +17,6 @@ function App() {
 
   return (
     <Container maxWidth='x1'>
-      <ToastContainer />
 
       <Routes>
         <Route path="/" element={<Home />} />
