@@ -16,7 +16,7 @@ const theme = createTheme({
       main: '#000000',
     },
     btn: {
-      main: '#FF4E00',
+      main: '#DD4242',
     },
     btnBlack: {
       main: '#000000',
