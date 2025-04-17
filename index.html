@@ -1,221 +1,279 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
+  <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Shinytomato - Sustainable Car Detailing</title>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet" />
-
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <script type="module">
+      import { animate } from "https://cdn.jsdelivr.net/npm/motion@12.7.3/+esm";
+      const cards = document.querySelector(".service-cards");
+      animate(cards, { scale: 1 }, { ease: "circInOut", duration: 3 });
+    </script>
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    fontFamily: {
-                        sans: ['Poppins', 'sans-serif'],
-                    },
-                    colors: {
-                        primary: '#111319',
-                        secondary: '#101010',
-                        accent: '#DD4242',
-                        highlight: '#DD4242',
-                    },
-                },
+      tailwind.config = {
+        theme: {
+          extend: {
+            fontFamily: {
+              sans: ["Poppins", "sans-serif"],
             },
-        };
+            colors: {
+              primary: "#111319",
+              secondary: "#101010",
+              accent: "#DD4242",
+              highlight: "#DD4242",
+            },
+          },
+        },
+      };
     </script>
-    <style>
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-            }
+  </head>
 
-            to {
-                opacity: 1;
-            }
-        }
-
-        .animate-fadeIn {
-            animation: fadeIn 1s ease-out forwards;
-        }
-
-        @keyframes slideUp {
-            from {
-                transform: translateY(50px);
-                opacity: 0;
-            }
-
-            to {
-                transform: translateY(0);
-                opacity: 1;
-            }
-        }
-
-        .animate-slideUp {
-            animation: slideUp 0.8s ease-out forwards;
-        }
-    </style>
-</head>
-
-<body class="bg-primary text-white font-sans">
-
+  <body class="bg-primary text-white font-sans">
     <!-- Header -->
-    <header class="relative w-full h-screen bg-cover bg-center z-40"
-        style="background-image: url('images/background1.png');">
-        <div class="absolute inset-0 bg-gradient-to-b from-primary from-1% to-transparent bg-opacity-30"></div>
+    <header
+      class="relative w-full h-screen bg-cover bg-center z-40"
+      style="background-image: url('images/background1.png')"
+    >
+      <div
+        class="absolute inset-0 bg-gradient-to-b from-primary from-1% to-transparent bg-opacity-30"
+      ></div>
 
-        <nav class="absolute top-0 w-full px-6 py-4 md:px-16 flex justify-between items-center z-50">
-            <h1 class="text-2xl md:text-3xl font-bold"><a href="/">shinytomato<span class="text-highlight">.</span></a>
-            </h1>
-            <ul class="flex gap-6 md:gap-10">
-                <li><a href="" class="hover:text-accent">About</a></li>
-                <li><a href="/pages/services.html" class="hover:text-accent">Services</a></li>
-            </ul>
-        </nav>
+      <nav
+        class="absolute top-0 w-full px-6 py-4 md:px-16 flex justify-between items-center z-50"
+      >
+        <h1 class="text-2xl md:text-3xl font-bold">
+          <a href="/">shinytomato<span class="text-highlight">.</span></a>
+        </h1>
+        <ul class="flex gap-6 md:gap-20">
+          <li><a href="" class="hover:text-accent">About</a></li>
+          <li>
+            <a href="/services.html" class="hover:text-accent"
+              >Services</a
+            >
+          </li>
+        </ul>
+      </nav>
 
-        <div
-            class="absolute inset-0 bg-gradient-to-t from-primary from-1% to-transparent bg-opacity-30 flex items-center justify-center text-center px-6">
-            <div>
-                <h2 class="text-4xl sm:text-6xl md:text-8xl font-bold leading-tight">
-                    Sustainable<br />Car Detailing<span class="text-highlight">.</span>
-                </h2>
-            </div>
+      <div
+        class="absolute inset-0 bg-gradient-to-t from-primary from-1% to-transparent bg-opacity-30 flex items-center justify-center text-center px-6"
+      >
+        <div>
+          <h2 class="text-4xl sm:text-6xl md:text-8xl font-bold leading-tight">
+            Sustainable<br />Car Detailing<span class="text-highlight">.</span>
+          </h2>
         </div>
+      </div>
     </header>
 
     <!-- Services -->
-    <section class="py-16 px-6 md:px-16 bg-primary text-white">
-        <h2 class="text-3xl sm:text-5xl md:text-6xl font-bold mb-6 text-center md:text-left">Our Services</h2>
-        <p class="mb-12 text-center md:text-left">
-            Contact us via WhatsApp at <span class="font-semibold">+65 8808 9220</span> to book our services or for any
-            enquiries (first enquiry is free)!
-        </p>
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 animate-fadeIn">
-            <!-- Eco-Groom -->
-            <div class="relative h-[500px] w-full rounded-2xl overflow-hidden shadow-lg bg-cover bg-center"
-                style="background-image: url('/images/eco-groom.png')">
-                <div class="absolute inset-0 bg-black/20 text-white flex flex-col justify-between p-6">
-                    <div>
-                        <h3 class="text-5xl font-extrabold mb-2">Eco-Groom</h3>
-                        <p class="text-xl mt-10">Eco-Groom offers thorough interior and exterior cleaning with
-                            eco-friendly
-                            products. Add-on services are available.</p>
-                    </div>
-                    <button
-                        class="bg-white text-black font-medium px-6 py-2 rounded-lg w-fit self-start mt-4 transition duration-300 ease-in-out  hover:-translate-y-1 hover:scale-110">Check
-                        this out →</button>
-                </div>
+    <section class="py-16 px-6 md:px-16 bg-primary text-white section-div">
+      <h2
+        class="text-3xl sm:text-5xl md:text-6xl font-bold mb-6 text-center md:text-left"
+      >
+        Our Services
+      </h2>
+      <p class="mb-12 text-center md:text-left">
+        Contact us via WhatsApp at
+        <span class="font-semibold">+65 8808 9220</span> to book our services or
+        for any enquiries (first enquiry is free)!
+      </p>
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+        <!-- Eco-Groom -->
+        <div
+          class="relative h-[500px] w-full rounded-2xl overflow-hidden shadow-lg bg-cover bg-center service-cards"
+          style="background-image: url('/images/eco-groom.png')"
+        >
+          <div
+            class="absolute inset-0 bg-black/20 text-white flex flex-col justify-between p-6"
+          >
+            <div>
+              <h3 class="text-5xl font-extrabold mb-2">Eco-Groom</h3>
+              <p class="text-xl mt-10">
+                Eco-Groom offers thorough interior and exterior cleaning with
+                eco-friendly products. Add-on services are available.
+              </p>
             </div>
-
-            <!-- Eco-Coat -->
-            <div class="relative h-[500px] w-full rounded-2xl overflow-hidden shadow-lg bg-cover bg-center"
-                style="background-image: url('/images/eco-coat.png')">
-                <div class="absolute inset-0 bg-black/20 text-white flex flex-col justify-between p-6">
-                    <div>
-                        <h3 class="text-5xl font-extrabold mb-2">Eco-Coat</h3>
-                        <p class="text-xl mt-10 font-normal">Long-lasting protective coatings for your vehicle that
-                            enhance appearance and
-                            durability.</p>
-                    </div>
-                    <button
-                        class="bg-white text-black font-medium px-6 py-2 rounded-lg w-fit self-start mt-4 transition duration-300 ease-in-out  hover:-translate-y-1 hover:scale-110">Check
-                        this out →</button>
-                </div>
-            </div>
-
-            <!-- Eco-Posh -->
-            <div class="relative h-[500px] w-full rounded-2xl overflow-hidden shadow-lg bg-cover bg-center"
-                style="background-image: url('/images/eco-groom.png')">
-                <div class="absolute inset-0 bg-black/20 text-white flex flex-col justify-between p-6">
-                    <div>
-                        <h3 class="text-5xl font-extrabold mb-2">Eco-Posh</h3>
-                        <p class="text-xl mt-10 ">Premium detailing with advanced paint correction and enhancement,
-                            delivering
-                            a
-                            luxurious finish.</p>
-                    </div>
-                    <button
-                        class="bg-white text-black font-medium px-6 py-2 rounded-lg w-fit self-start mt-4 transition duration-300 ease-in-out  hover:-translate-y-1 hover:scale-110">Check
-                        this out →</button>
-                </div>
-            </div>
+            <button
+              class="bg-white text-black font-medium px-6 py-2 rounded-lg w-fit self-start mt-4 transition duration-300 ease-in-out hover:-translate-y-1 hover:scale-110"
+            >
+              Check this out →
+            </button>
+          </div>
         </div>
+
+        <!-- Eco-Coat -->
+        <div
+          class="relative h-[500px] w-full rounded-2xl overflow-hidden shadow-lg bg-cover bg-center service-cards"
+          style="background-image: url('/images/eco-coat.png')"
+        >
+          <div
+            class="absolute inset-0 bg-black/20 text-white flex flex-col justify-between p-6"
+          >
+            <div>
+              <h3 class="text-5xl font-extrabold mb-2">Eco-Coat</h3>
+              <p class="text-xl mt-10 font-normal">
+                Long-lasting protective coatings for your vehicle that enhance
+                appearance and durability.
+              </p>
+            </div>
+            <button
+              class="bg-white text-black font-medium px-6 py-2 rounded-lg w-fit self-start mt-4 transition duration-300 ease-in-out hover:-translate-y-1 hover:scale-110"
+            >
+              Check this out →
+            </button>
+          </div>
+        </div>
+
+        <!-- Eco-Posh -->
+        <div
+          class="relative h-[500px] w-full rounded-2xl overflow-hidden shadow-lg bg-cover bg-center service-cards"
+          style="background-image: url('/images/eco-groom.png')"
+        >
+          <div
+            class="absolute inset-0 bg-black/20 text-white flex flex-col justify-between p-6"
+          >
+            <div>
+              <h3 class="text-5xl font-extrabold mb-2">Eco-Posh</h3>
+              <p class="text-xl mt-10">
+                Premium detailing with advanced paint correction and
+                enhancement, delivering a luxurious finish.
+              </p>
+            </div>
+            <button
+              class="bg-white text-black font-medium px-6 py-2 rounded-lg w-fit self-start mt-4 transition duration-300 ease-in-out hover:-translate-y-1 hover:scale-110"
+            >
+              Check this out →
+            </button>
+          </div>
+        </div>
+      </div>
     </section>
 
     <!-- FAQ -->
     <section class="bg-primary py-16 px-6 md:px-16">
-        <h2 class="text-3xl md:text-4xl font-bold mb-8 text-center md:text-left">FAQ</h2>
-        <div class="space-y-4">
-            <div class="border border-gray-700 rounded-lg p-4 cursor-pointer" onclick="toggleFAQ(this)">
-                <h3 class="font-semibold">Lorem ipsum dolor sit amet, consectetur adipiscing elit?</h3>
-                <p class="hidden mt-2 text-sm text-gray-300">Answer to the question goes here.</p>
-            </div>
-            <div class="border border-gray-700 rounded-lg p-4 cursor-pointer" onclick="toggleFAQ(this)">
-                <h3 class="font-semibold">Lorem ipsum dolor sit amet, consectetur adipiscing elit?</h3>
-                <p class="hidden mt-2 text-sm text-gray-300">Answer to the question goes here.</p>
-            </div>
-            <div class="border border-gray-700 rounded-lg p-4 cursor-pointer" onclick="toggleFAQ(this)">
-                <h3 class="font-semibold">Lorem ipsum dolor sit amet, consectetur adipiscing elit?</h3>
-                <p class="hidden mt-2 text-sm text-gray-300">Answer to the question goes here.</p>
-            </div>
-            <div class="border border-gray-700 rounded-lg p-4 cursor-pointer" onclick="toggleFAQ(this)">
-                <h3 class="font-semibold">Lorem ipsum dolor sit amet, consectetur adipiscing elit?</h3>
-                <p class="hidden mt-2 text-sm text-gray-300">Answer to the question goes here.</p>
-            </div>
+      <h2 class="text-3xl md:text-4xl font-bold mb-8 text-center md:text-left">
+        FAQ
+      </h2>
+      <div class="space-y-4">
+        <div
+          class="border border-gray-700 rounded-lg p-4 cursor-pointer"
+          onclick="toggleFAQ(this)"
+        >
+          <h3 class="font-semibold">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit?
+          </h3>
+          <p class="hidden mt-2 text-sm text-gray-300">
+            Answer to the question goes here.
+          </p>
         </div>
+        <div
+          class="border border-gray-700 rounded-lg p-4 cursor-pointer"
+          onclick="toggleFAQ(this)"
+        >
+          <h3 class="font-semibold">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit?
+          </h3>
+          <p class="hidden mt-2 text-sm text-gray-300">
+            Answer to the question goes here.
+          </p>
+        </div>
+        <div
+          class="border border-gray-700 rounded-lg p-4 cursor-pointer"
+          onclick="toggleFAQ(this)"
+        >
+          <h3 class="font-semibold">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit?
+          </h3>
+          <p class="hidden mt-2 text-sm text-gray-300">
+            Answer to the question goes here.
+          </p>
+        </div>
+        <div
+          class="border border-gray-700 rounded-lg p-4 cursor-pointer"
+          onclick="toggleFAQ(this)"
+        >
+          <h3 class="font-semibold">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit?
+          </h3>
+          <p class="hidden mt-2 text-sm text-gray-300">
+            Answer to the question goes here.
+          </p>
+        </div>
+      </div>
     </section>
 
     <!-- Footer -->
     <footer class="bg-primary py-10 px-6 md:px-16 border-t border-gray-700">
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
-            <div>
-                <h3 class="text-xl font-semibold mb-2">Contact Us!</h3>
-                <p>+65 8808 9220</p>
-                <p>enquiries@shinytomato.com.sg</p>
-            </div>
-            <div>
-                <h3 class="text-xl font-semibold mb-2">Quick Links</h3>
-                <ul class="space-y-1">
-                    <li><a href="#" class="hover:text-accent">Home Page</a></li>
-                    <li><a href="#" class="hover:text-accent">Our Services</a></li>
-                    <li><a href="#" class="hover:text-accent">About</a></li>
-                    <li><a href="#" class="hover:text-accent">Bookings</a></li>
-                </ul>
-            </div>
-            <div class="flex gap-4 text-xl">
-                <!-- Facebook -->
-                <a href="#" class="hover:text-accent">
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 320 512" class="w-5 h-5">
-                        <path
-                            d="M80 299.3V512H196V299.3h86.5l18-97.8H196V166.9c0-51.7 20.3-71.5 72.7-71.5c16.3 0 29.4 .4 37 1.2V7.9C291.4 4 256.4 0 236.2 0C129.3 0 80 50.5 80 159.4v42.1H14v97.8H80z" />
-                    </svg>
-                </a>
-                <!-- TikTok -->
-                <a href="#" class="hover:text-accent">
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 448 512" class="w-5 h-5">
-                        <path
-                            d="M448 209.9a210.1 210.1 0 0 1 -122.8-39.3V349.4A162.6 162.6 0 1 1 185 188.3V278.2a74.6 74.6 0 1 0 52.2 71.2V0l88 0a121.2 121.2 0 0 0 1.9 22.2h0A122.2 122.2 0 0 0 381 102.4a121.4 121.4 0 0 0 67 20.1z" />
-                    </svg>
-                </a>
-                <!-- Instagram -->
-                <a href="#" class="hover:text-accent">
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 448 512" class="w-5 h-5">
-                        <path
-                            d="M224.1 141c-63.6 0-114.9 51.3-114.9 114.9s51.3 114.9 114.9 114.9S339 319.5 339 255.9 287.7 141 224.1 141zm0 189.6c-41.1 0-74.7-33.5-74.7-74.7s33.5-74.7 74.7-74.7 74.7 33.5 74.7 74.7-33.6 74.7-74.7 74.7zm146.4-194.3c0 14.9-12 26.8-26.8 26.8-14.9 0-26.8-12-26.8-26.8s12-26.8 26.8-26.8 26.8 12 26.8 26.8zm76.1 27.2c-1.7-35.9-9.9-67.7-36.2-93.9-26.2-26.2-58-34.4-93.9-36.2-37-2.1-147.9-2.1-184.9 0-35.8 1.7-67.6 9.9-93.9 36.1s-34.4 58-36.2 93.9c-2.1 37-2.1 147.9 0 184.9 1.7 35.9 9.9 67.7 36.2 93.9s58 34.4 93.9 36.2c37 2.1 147.9 2.1 184.9 0 35.9-1.7 67.7-9.9 93.9-36.2 26.2-26.2 34.4-58 36.2-93.9 2.1-37 2.1-147.8 0-184.8z" />
-                    </svg>
-                </a>
-            </div>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
+        <div>
+          <h3 class="text-xl font-semibold mb-2">Contact Us!</h3>
+          <p>+65 8808 9220</p>
+          <p>enquiries@shinytomato.com.sg</p>
         </div>
+        <div>
+          <h3 class="text-xl font-semibold mb-2">Quick Links</h3>
+          <ul class="space-y-1">
+            <li><a href="#" class="hover:text-accent">Home Page</a></li>
+            <li><a href="#" class="hover:text-accent">Our Services</a></li>
+            <li><a href="#" class="hover:text-accent">About</a></li>
+            <li><a href="#" class="hover:text-accent">Bookings</a></li>
+          </ul>
+        </div>
+        <div class="flex gap-4 text-xl">
+          <!-- Facebook -->
+          <a href="#" class="hover:text-accent">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="currentColor"
+              viewBox="0 0 320 512"
+              class="w-5 h-5"
+            >
+              <path
+                d="M80 299.3V512H196V299.3h86.5l18-97.8H196V166.9c0-51.7 20.3-71.5 72.7-71.5c16.3 0 29.4 .4 37 1.2V7.9C291.4 4 256.4 0 236.2 0C129.3 0 80 50.5 80 159.4v42.1H14v97.8H80z"
+              />
+            </svg>
+          </a>
+          <!-- TikTok -->
+          <a href="#" class="hover:text-accent">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="currentColor"
+              viewBox="0 0 448 512"
+              class="w-5 h-5"
+            >
+              <path
+                d="M448 209.9a210.1 210.1 0 0 1 -122.8-39.3V349.4A162.6 162.6 0 1 1 185 188.3V278.2a74.6 74.6 0 1 0 52.2 71.2V0l88 0a121.2 121.2 0 0 0 1.9 22.2h0A122.2 122.2 0 0 0 381 102.4a121.4 121.4 0 0 0 67 20.1z"
+              />
+            </svg>
+          </a>
+          <!-- Instagram -->
+          <a href="#" class="hover:text-accent">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="currentColor"
+              viewBox="0 0 448 512"
+              class="w-5 h-5"
+            >
+              <path
+                d="M224.1 141c-63.6 0-114.9 51.3-114.9 114.9s51.3 114.9 114.9 114.9S339 319.5 339 255.9 287.7 141 224.1 141zm0 189.6c-41.1 0-74.7-33.5-74.7-74.7s33.5-74.7 74.7-74.7 74.7 33.5 74.7 74.7-33.6 74.7-74.7 74.7zm146.4-194.3c0 14.9-12 26.8-26.8 26.8-14.9 0-26.8-12-26.8-26.8s12-26.8 26.8-26.8 26.8 12 26.8 26.8zm76.1 27.2c-1.7-35.9-9.9-67.7-36.2-93.9-26.2-26.2-58-34.4-93.9-36.2-37-2.1-147.9-2.1-184.9 0-35.8 1.7-67.6 9.9-93.9 36.1s-34.4 58-36.2 93.9c-2.1 37-2.1 147.9 0 184.9 1.7 35.9 9.9 67.7 36.2 93.9s58 34.4 93.9 36.2c37 2.1 147.9 2.1 184.9 0 35.9-1.7 67.7-9.9 93.9-36.2 26.2-26.2 34.4-58 36.2-93.9 2.1-37 2.1-147.8 0-184.8z"
+              />
+            </svg>
+          </a>
+        </div>
+      </div>
     </footer>
 
     <!-- FAQ toggle script -->
     <script>
-        function toggleFAQ(el) {
-            const para = el.querySelector('p');
-            para.classList.toggle('hidden');
-        }
+      function toggleFAQ(el) {
+        const para = el.querySelector("p");
+        para.classList.toggle("hidden");
+      }
     </script>
-</body>
-
+  </body>
 </html>
