@@ -7,6 +7,8 @@
   <title>Shinytomato - Sustainable Car Detailing</title>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet" />
   <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" rel="stylesheet">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
   <script>
     tailwind.config = {
       theme: {
@@ -23,6 +25,11 @@
         },
       },
     };
+  </script>
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      AOS.init();
+    });
   </script>
 </head>
 
@@ -55,7 +62,7 @@
   </header>
 
   <!-- Services -->
-  <section class="py-16 px-6 md:px-16 bg-primary text-white section-div">
+  <section class="py-16 px-6 md:px-16 bg-primary text-white section-div" >
     <h2 class="text-3xl sm:text-5xl md:text-6xl font-bold mb-6 text-center md:text-left">
       Our Services
     </h2>
@@ -66,7 +73,7 @@
     </p>
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10 place-items-center">
       <!-- Eco-Groom -->
-      <div
+      <div data-aos="slide-up" data-aos-delay="100"
         class="relative h-[500px] w-full max-w-[350px] rounded-2xl overflow-hidden shadow-lg bg-cover bg-center service-cards"
         style="background-image: url('/images/eco-groom.png')">
         <div class="absolute inset-0 bg-black/20 text-white flex flex-col justify-between p-6">
@@ -85,7 +92,7 @@
       </div>
 
       <!-- Eco-Coat -->
-      <div
+      <div data-aos="slide-up" data-aos-delay="200" 
         class="relative h-[500px] w-full max-w-[350px] rounded-2xl overflow-hidden shadow-lg bg-cover bg-center service-cards"
         style="background-image: url('/images/eco-coat.png')">
         <div class="absolute inset-0 bg-black/20 text-white flex flex-col justify-between p-6">
@@ -104,7 +111,7 @@
       </div>
 
       <!-- Eco-Posh -->
-      <div
+      <div data-aos="slide-up" data-aos-delay="300"
         class="relative h-[500px] w-full max-w-[350px] rounded-2xl overflow-hidden shadow-lg bg-cover bg-center service-cards"
         style="background-image: url('/images/eco-groom.png')">
         <div class="absolute inset-0 bg-black/20 text-white flex flex-col justify-between p-6">
@@ -122,7 +129,7 @@
         </div>
       </div>
       <!-- Eco-Posh -->
-      <div
+      <div data-aos="slide-up" data-aos-delay="400"
         class="relative h-[500px] w-full max-w-[350px] rounded-2xl overflow-hidden shadow-lg bg-cover bg-center service-cards"
         style="background-image: url('/images/eco-groom.png')">
         <div class="absolute inset-0 bg-black/20 text-white flex flex-col justify-between p-6">
