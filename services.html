@@ -8,7 +8,8 @@
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet" />
   <script src="https://cdn.tailwindcss.com"></script>
   <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
-
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" rel="stylesheet">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
   <script>
     tailwind.config = {
       theme: {
@@ -26,14 +27,17 @@
       },
     };
   </script>
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      AOS.init();
+    });
+  </script>
 </head>
 
 <body class="bg-secondary text-white font-sans">
   <!-- Header -->
-  <header class="relative w-full h-screen bg-cover bg-center" style="
-        background-image: url('images/background2.png');
-      ">
-    <div class="absolute inset-0 bg-gradient-to-b from-primary from-1% to-transparent bg-opacity-30"></div>
+  <header class="relative w-full h-screen bg-cover bg-center bg-[url(/images/background2.png)]">
+    <div class="absolute inset-0 bg-gradient-to-b from-primary/75 to-transparent bg-opacity-30"></div>
     <!-- Nav -->
     <nav class="absolute sticky top-0 w-full px-6 py-4 md:px-16 flex justify-between items-center z-50">
       <h1 class="text-2xl md:text-3xl font-bold">
@@ -47,7 +51,7 @@
       </ul>
     </nav>
     <div
-      class="absolute inset-0 bg-gradient-to-t from-primary from-1% to-transparent bg-opacity-30 flex items-center justify-center text-center">
+      class="absolute inset-0 bg-gradient-to-t from-primary to-transparent bg-opacity-30 flex items-center justify-center text-center">
       <div>
         <h2 class="text-4xl sm:text-6xl md:text-8xl font-bold">
           Premium care,<br />made convenient<span class="text-highlight" style="font-size: 0.3em;">🍅</span>
