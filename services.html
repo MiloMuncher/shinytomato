@@ -18,10 +18,10 @@
             sans: ["Poppins", "sans-serif"], // replaces default sans
           },
           colors: {
-            primary: "#111319",
+            primary: "#04050b",
             secondary: "#101010",
-            accent: "#DD4242",
-            highlight: "#DD4242",
+            accent: "#DD4242", //dot colour
+            highlight: "#B82828",
           },
         },
       },
@@ -39,9 +39,10 @@
   <header class="relative w-full h-screen bg-cover bg-center bg-[url(/images/background2.png)]">
     <div class="absolute inset-0 bg-gradient-to-b from-primary/75 to-transparent bg-opacity-30"></div>
     <!-- Nav -->
-    <nav class="absolute sticky top-0 w-full px-6 py-4 md:px-16 flex justify-between items-center z-50">
+    <nav
+      class="absolute sticky top-0 w-full px-6 py-6 md:px-6 flex justify-between items-center z-50 bg-gradient-to-b from-primary/75 to-transparent">
       <h1 class="text-2xl md:text-3xl font-bold">
-        <a href="/">shinytomato<span class="text-highlight">.</span></a>
+        <a href="/">shinytomato<span class="text-accent">.</span></a>
       </h1>
       <ul class="flex gap-6 md:gap-20">
         <li><a href="/" class="hover:text-accent">About</a></li>
@@ -54,14 +55,14 @@
       class="absolute inset-0 bg-gradient-to-t from-primary to-transparent bg-opacity-30 flex items-center justify-center text-center">
       <div>
         <h2 class="text-4xl sm:text-6xl md:text-8xl font-bold">
-          Premium care,<br />made convenient<span class="text-highlight" style="font-size: 0.3em;">🍅</span>
+          Premium care,<br />made convenient<span class="text-accent">.</span>
         </h2>
         <p class="mt-4 text-lg md:text-xl max-w-xl mx-auto">
           Your eco-friendly and premium solution to professional car grooming
           and detailing.
         </p>
         <button
-          class="mt-6 bg-highlight text-white font-normal px-6 py-3 rounded transition duration-300 ease-in-out hover:-translate-y-1 hover:scale-110">
+          class="mt-6 bg-highlight text-white font-normal px-6 py-3 rounded transition duration-300 ease-in-out hover:-translate-z-1 hover:scale-110">
           What We Do
         </button>
       </div>
@@ -70,13 +71,13 @@
 
   <!-- Why Us -->
   <section class="py-16 px-6 md:px-16 bg-primary text-white">
-    <div class="max-w-7xl mx-auto">
+    <div class="max-w-full mx-auto px-4 md:px-0">
       <div class="grid grid-cols-1 md:grid-cols-3 ">
         <!-- Left Column: Title with horizontal line -->
         <div class="flex items-start md:items-start ">
           <div class="flex items-center gap-4">
-            <div class="w-10 h-px bg-white"></div>
-            <h3 class="text-xl font-extralight">WHY US?</h3>
+            <div class="w-20 h-px bg-white"></div>
+            <h3 class="text-3xl font-extralight">WHY US?</h3>
           </div>
         </div>
 
@@ -106,12 +107,12 @@
   <section class="py-16 px-6 md:px-16 bg-primary text-white">
     <div class="max-w-7xl mx-auto">
       <!-- Top Row: Title & Description -->
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-10 mb-16">
+      <div class="grid col-span-1 md:grid-cols-2 mb-16">
         <div>
-          <h2 class="text-5xl font-bold leading-tight">Meet<br />The Team!</h2>
+          <h2 class="text-6xl font-bold leading-tight">Meet<br />The Team!</h2>
         </div>
         <div class="flex items-center">
-          <p class="text-base md:text-lg leading-relaxed">
+          <p class="text-base md:text-lg leading-relaxed col-span-2">
             ShinyTomato’s leadership team is dedicated to driving the company’s mission of providing premium,
             eco-friendly car detailing services. Our leaders have XX years in service of being car detailers, and have a
             wide expanse of knowledge ready to cater to you and your car.
@@ -120,6 +121,7 @@
       </div>
 
       <!-- Team Members Grid -->
+       <!-- make this a carousel later -->
       <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
         <!-- Member 1 -->
         <div class="text-center">
