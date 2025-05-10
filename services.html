@@ -60,9 +60,9 @@
                     class="bg-primary bg-opacity-40 p-4 sm:p-6 rounded-lg space-y-2 sm:space-y-4 max-w-full md:max-w-fit">
                     <template x-for="(item, index) in Object.keys(services)" :key="index">
                         <button @click="selected = item"
-                            :class="selected === item ? 'bg-accent text-white' : 'text-white'"
-                            class="px-3 sm:px-4 py-1.5 sm:py-2 rounded text-left text-lg sm:text-xl md:text-2xl font-semibold transition hover:scale-105 w-full flex items-center gap-x-2">
-                            <img src="/images/arrow.png" alt="" class="w-3.5 sm:w-4 h-3.5 sm:h-4">
+                            :class="selected === item ? 'bg-highlight text-white' : 'text-white'"
+                            class="px-5 sm:px-6 py-2 sm:py-6 rounded-xl text-left text-lg sm:text-xl md:text-2xl font-thin transition hover:scale-105 w-full flex items-center gap-x-2">
+                            <img src="/images/arrow.png" alt="" class="w-3.5 sm:w-5 h-3.5 sm:h-5">
                             <span x-text="item"></span>
                         </button>
                     </template>
@@ -70,8 +70,9 @@
 
                 <!-- Main Description -->
                 <div class="text-center lg:text-left px-2 sm:px-0">
-                    <h2 class="text-5xl sm:text-7xl md:text-8xl lg:text-9xl font-extrabold mb-2 sm:mb-4"
-                        x-text="selected"><span class="font-accent">.</span></h2>
+                    <h2 class="text-5xl sm:text-7xl md:text-8xl lg:text-9xl font-extrabold mb-2 sm:mb-4">
+                        <span x-text="selected"></span><span class="text-accent">.</span>
+                    </h2>
                     <p class="text-lg sm:text-xl md:text-2xl opacity-80 max-w-full md:max-w-3xl mx-auto lg:mx-0"
                         x-text="services[selected].description"></p>
                 </div>
@@ -86,7 +87,10 @@
                 class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 sm:gap-0 mb-4 sm:mb-6">
                 <h3 class="text-4xl sm:text-6xl md:text-7xl font-bold">Basic Plan</h3>
                 <button
-                    class="bg-accent px-4 py-2 rounded text-white font-medium hover:scale-105 transition hidden sm:inline-block text-sm sm:text-base">Upgrade</button>
+                    class="flex items-center gap-x-2  hidden bg-highlight px-4 py-4 rounded-xl text-white font-medium hover:scale-105 transition hidden text-sm sm:text-base">
+                    <img src="/images/arrow-up.png" alt="" class="w-3.5 sm:w-5 h-3.5 sm:h-5">
+                    Upgrade
+                </button>
             </div>
             <ul class="list-decimal list-inside space-y-1.5 sm:space-y-2 text-base sm:text-lg">
                 <template x-for="(item, index) in services[selected].plan" :key="index">
@@ -207,7 +211,20 @@
                     }
                 },
                 init() {
-                    this.selected = 'Eco-Groom';
+                    const params = new URLSearchParams(window.location.search);
+                    const serviceParam = params.get('service');
+                    const matchedKey = Object.keys(this.services).find(
+                        key => key.toLowerCase() === (serviceParam || '').toLowerCase()
+                    );
+                    this.selected = matchedKey || 'Eco-Groom';
+
+                    if (serviceParam && this.services.hasOwnProperty(serviceParam)) {
+                        this.selected = serviceParam;
+                        setTimeout(() => {
+                            const newUrl = window.location.origin + window.location.pathname;
+                            history.replaceState({}, document.title, newUrl);
+                        }, 100); // Delay clearing the URL for 100ms to ensure selection first
+                    }
                 }
             }
         }
