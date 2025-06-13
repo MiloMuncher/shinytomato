@@ -72,18 +72,22 @@
 
                 <!-- Main Description -->
                 <div class="text-center lg:text-left px-2 sm:px-0">
-                    <h2 class="text-5xl sm:text-7xl md:text-8xl lg:text-9xl font-extrabold mb-2 sm:mb-4">
+                    <h2 :class="selected === 'Vinyl Wrapping' 
+                        ? 'text-4xl sm:text-6xl md:text-7xl lg:text-8xl' 
+                        : 'text-5xl sm:text-7xl md:text-8xl lg:text-9xl'" class="font-extrabold mb-2 sm:mb-4">
                         <span x-text="selected"></span><span class="text-accent">.</span>
                     </h2>
-                    <p class="text-lg sm:text-xl md:text-2xl opacity-80 max-w-full md:max-w-3xl mx-auto lg:mx-0"
-                        x-text="services[selected].description"></p>
-                </div>
+                    <p x-text="services[selected].description" :class="[
+                        'text-lg sm:text-xl md:text-2xl opacity-80 max-w-full md:max-w-3xl mx-auto lg:mx-0',
+                        selected === 'Eco-Groom' ? 'mb-8 lg:mb-0' : ''
+                    ]">
+                    </p>
             </section>
         </div>
     </header>
 
     <!-- Plan Section -->
-    <section class="px-4 sm:px-6 md:px-16 py-8 sm:py-12 bg-primary">
+    <section class="px-4 sm:px-6 md:px-16 py-8 sm:py-12 mt-8 bg-primary">
         <div class="max-w-7xl mx-auto">
             <div
                 class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 sm:gap-0 mb-4 sm:mb-6">
@@ -141,13 +145,16 @@
                 </ul>
 
                 <div class="flex gap-3 sm:gap-4 text-lg sm:text-xl">
-                    <a href="https://www.facebook.com/share/15jCN3VbWK/?mibextid=wwXIfr" class="opacity-80 hover:opacity-100">
+                    <a href="https://www.facebook.com/share/15jCN3VbWK/?mibextid=wwXIfr"
+                        class="opacity-80 hover:opacity-100">
                         <img src="/images/facebook.png" alt="" class="w-5 sm:w-6 h-5 sm:h-6" />
                     </a>
-                    <a href="https://www.tiktok.com/@shinytomatosg?_t=ZS-8wzxA0pcrg7&_r=1" class="opacity-80 hover:opacity-100">
+                    <a href="https://www.tiktok.com/@shinytomatosg?_t=ZS-8wzxA0pcrg7&_r=1"
+                        class="opacity-80 hover:opacity-100">
                         <img src="/images/TikTok.png" alt="" class="w-5 sm:w-6 h-5 sm:h-6" />
                     </a>
-                    <a href="https://www.instagram.com/shinytomatoservices?igsh=Y3E2YnQ3dGlyN3Ni" class="opacity-80 hover:opacity-100">
+                    <a href="https://www.instagram.com/shinytomatoservices?igsh=Y3E2YnQ3dGlyN3Ni"
+                        class="opacity-80 hover:opacity-100">
                         <img src="/images/instagram.png" alt="" class="w-5 sm:w-6 h-5 sm:h-6" />
                     </a>
                 </div>
